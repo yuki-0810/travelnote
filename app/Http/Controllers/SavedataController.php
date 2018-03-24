@@ -9,8 +9,13 @@ use App\Http\Controllers\Controller;
 
 use App\Test;
 
-class WelcomeController extends Controller
+class SavedataController extends Controller
 {
+    
+    public function savedata(Request $request){
+        
+     }  
+  
     /**
      * Display a listing of the resource.
      *
@@ -19,11 +24,6 @@ class WelcomeController extends Controller
     public function index()
     {
         //
-        $test = Test::all();
-        
-        return view('welcome',[
-            'test' => $test,
-            ]);
     }
 
     /**
@@ -44,8 +44,21 @@ class WelcomeController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+        $result = $request->has('cityName');
+        
+        //フォームの入力値を受け取る
+        if ($result) {
+            //フォームに入力された内容をデータベースに保存する
+            $cityName = New Test;
+            $cityName->cityname = $request->cityName;
+            $cityName->save();
+        }
+        
+        
+        //リダイレクトして、route側から別のコントローラーを読み込ませる->なぜかリダイレクトされない。
+        //return response()->json($cityName->cityname);
+        return redirect('/');
+    } 
 
     /**
      * Display the specified resource.

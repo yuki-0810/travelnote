@@ -14,5 +14,9 @@
 @endsection
 
 @section('content')
-    テスト
+    <div class="buttons text-center">
+        @if (Auth::check())
+            @include('maps.maps',['test' => $test])
+        @endif
+    </div>
 @endsection

@@ -21,3 +21,6 @@ Route::post('signup', 'Auth\AuthController@postRegister')->name('signup.post');
 Route::get('login', 'Auth\AuthController@getLogin')->name('login.get');
 Route::post('login', 'Auth\AuthController@postLogin')->name('login.post');
 Route::get('logout', 'Auth\AuthController@getLogout')->name('logout.get');
+
+//Ajax通信をポストで受け取った際に処理を実行する。
+Route::post('/savedata', 'SavedataController@store');
